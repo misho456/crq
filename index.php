@@ -1,0 +1,16 @@
+<html>
+<div style="background-color: rgb(255, 255, 255);">
+<div class="nav" style="font-family: Arial, Helvetica, sans-serif;">
+<div class="logo" style=""><span style="font-family: &quot;Helvetica Neue&quot;, &quot;Noto Naskh Arabic UI&quot;, Arial, sans-serif; text-align: right;"><b style=""><font size="6">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;JPMorgan</font></b></span></div>
+<div class="logo" style="font-size: 15px; color: rgb(0, 0, 0);"><br /></div>
+<div class="logo" style="font-size: 15px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<b style=""><font color="#ff0000">Your Online Account has been Locked.</font></b></div></div>
+<div class="content" style="border-width: 0.1px; border-bottom-style: solid; border-color: rgb(85, 136, 0);">
+<div class="p" style="color: rgb(0, 0, 0); font-family: serif, sans-serif; font-size: 15px; margin: 15px;"><span style="font-family: Arial, Helvetica, sans-serif;"><strong><font size="3">Dear Client,</font></strong></span></div>
+<div class="p" style="color: rgb(0, 0, 0); font-family: serif, sans-serif; font-size: 15px; margin: 15px;"><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px;">Our system has detected some unusual activity on your&nbsp;online account access 5 minutes prior to our message.</span></span><br /><span style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 14px;">Therefore we have put hold on your online access to&nbsp;provide better security for your protection.</span></span><br /><br /><b>You will need to verify your identity in order to keep using your account online access.</b></div>
+<div class="p" style="color: rgb(0, 0, 0); font-family: serif, sans-serif; font-size: 15px; margin: 15px;"><span style="font-family: Arial, Helvetica, sans-serif;"><span style="color: rgb(51, 51, 153);"><b>Click Here</b></span>&nbsp;<span style="font-size: 14px;">to start the verification process.</span></span></div>
+<div class="p" style="color: rgb(0, 0, 0); font-family: serif, sans-serif; font-size: 15px; margin: 15px;"><span style="font-family: arial, sans-serif; font-weight: inherit; white-space: nowrap;"><font size="2">Your security is our 1st priority Thank you for being a valued client</font></span></div>
+<div class="p" style="margin: 15px;"><font face="arial, sans-serif" size="3"><span style="white-space: nowrap;">Chase</span></font><font size="2" style="color: rgb(0, 0, 0); font-family: arial, sans-serif; font-size: 15px; font-weight: inherit; white-space: nowrap;">&nbsp;Online Banking</font><span style="color: rgb(0, 0, 0); font-family: arial, sans-serif; font-size: 15px; font-weight: inherit; white-space: nowrap;">&nbsp;</span></div></div>
+<table style="font-family: arial, helvetica, sans-serif; font-size: 13px; color: rgb(29, 34, 40); margin: 0pt; padding: 0pt; width: 761px;">
+<tbody>
+<tr>
+<td align="left" valign="top"><br /></td></tr></tbody></table></div>
